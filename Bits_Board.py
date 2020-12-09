@@ -1,161 +1,32 @@
-print("Welcome to BitsBoard")
-print("====================")
+import random
+print("\nWelcome to the BitsBoard game!!\n")
 
-a = input("Enter your name: ")
-print("Welcome", a)
-print("====================")
+name = input("Enter your name: ").capitalize()
+print("Welcome {}!\n".format(name))
 
+correct_greetings = ["Perfect!", "Good!", "Hmmm, impressive!", "Getting into groove...", "Excellent!"]
+incorrect_greetings = ["Wrong answer!", "Better luck next time!", "Try again!"]
 
-while (True):
+words_to_riddles = {"Vocabulary":"V_ca__la_y", "Language":"L__gu_g_", "Judge":"_ud_e", "Heart rate":"H__rt r__e", "Speed":"S___d", "Terrible":"T__r___e", "Frozen":"__oz_n", "Height":"H__gh_", "Attention":"__t_n___n", "Introvert":"___r_v__t"}
 
-    print("Question 1:")
-    print("V_ca__la_y")
-    i = input("Write the full word: ")
+score = 0
+for index, original_word in enumerate(words_to_riddles.keys()):
+    
+    for i in range(1, 4):
+        print(f"Question {index+1}: {words_to_riddles[original_word]}")
+        ans = input("Enter the answer: ")
 
-    while(True):
-        if i == ("Vocabulary"):
-            print("Perfect")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Vocabulary")
-        print("====================")
-        break
-
-    print("Question 2:")
-    print("L__gu_g_")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Language"):
-            print("Perfect")
+        if ans.capitalize() == original_word:
+            print(random.choice(correct_greetings))
+            score += 1
+            break
 
         else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Language")
-        print("====================")
-        break
+            print(random.choice(incorrect_greetings))
+            print("Chances left:", 3 - i)
+        
+    print("The answer was {}.".format(original_word))
+    print("\n---------------------------------------------------\n")
 
-    print("Question 3:")
-    print("_ud_e")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Judge"):
-            print("Good")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Judge")
-        print("====================")
-        break
-
-    print("Question 4:")
-    print("H__rt r__e")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Heart rate"):
-            print("Hmmm, Impressive")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Heart rate")
-        print("====================")
-        break
-
-    print("Question 5:")
-    print("S___d")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Speed"):
-            print("Good")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Speed")
-        print("====================")
-        break
-
-    print("Question 6:")
-    print("T__r___e")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Terrible"):
-            print("Excellent")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Terrible")
-        print("====================")
-        break
-
-        print("Question 7:")
-    print("__oz_n")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Frozen"):
-            print("Perfect")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Frozen")
-        print("====================")
-        break
-
-    print("Question 8:")
-    print("H__gh_")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Height"):
-            print("Good")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Height")
-        print("====================")
-        break
-
-    print("Question 9:")
-    print("__t_n___n")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Attention"):
-            print("Hmm...Impressive!!!")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Attention")
-        print("====================")
-        break
-
-    print("Question 10:")
-    print("___r_v__t")
-    i = input("Write the full word: ")
-
-    while(True):
-        if i == ("Introvert"):
-            print("Ohhh Bhai...😱")
-
-        else:
-            print("====================")
-            print("Sorry, Wrong answer")
-            print("The answer is: Introvert")
-        print("====================")
-        break
-
-    break
+print("\nResults:")
+print(f"{name}, you scored {score*10}% ({score}/10).")
